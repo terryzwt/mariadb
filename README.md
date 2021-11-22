@@ -286,6 +286,26 @@ default params values:
 ```
 ## Custom config
 For custom config, such as enable server_audit plugin, the config for server_audit can be volumed to /etc/my.cnf.d/server-audit.conf
+```
+[mysqld]
+## https://mariadb.com/kb/en/mariadb-audit-plugin-options-and-system-variables/#system-variables
+server_audit_logging           = ON
+#server_audit_events            = CONNECT,QUERY,TABLE
+server_audit_events            = TABLE,QUERY_DDL,QUERY_DCL
+server_audit_excl_users        =
+server_audit_file_path         = server_audit.log
+server_audit_file_rotate_now   = OFF
+server_audit_file_rotate_size  = 1073741824
+server_audit_file_rotations    = 9
+server_audit_incl_users        =
+server_audit_mode              = 0
+server_audit_output_type       = file
+server_audit_query_log_limit   = 1024
+server_audit_syslog_facility   = LOG_USER
+server_audit_syslog_ident      = mysql-server_auditing
+server_audit_syslog_info       =
+server_audit_syslog_priority   = LOG_INFO
+```
 ## Deployment
 
 Deploy MariaDB to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com/stacks/mariadb).
